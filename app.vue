@@ -1,5 +1,5 @@
 <template>
-    <NavBar/>
-  <NuxtPage />
-    <Footer>footer</Footer>
+    <NavBar />
+    <NuxtPage />
+    <MyFooter />
 </template>

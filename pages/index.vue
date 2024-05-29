@@ -1,7 +1,12 @@
 <template>
     <div>
-      <!-- <NuxtWelcome /> -->
-      <Hero />
+        <!-- <NuxtWelcome /> -->
+        <Hero />
     </div>
-  </template>
-  
+</template>
+
+<script setup>
+useHead({
+    title: 'CarTrader',
+})
+</script>

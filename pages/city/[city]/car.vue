@@ -9,8 +9,10 @@
 
 <script setup>
 const route = useRoute()
+const { capitalize } = useUtilities()
+
 useHead({
-    title: `${route.params.make || 'Cars' } in  ${route.params.city || 'your city' }`,
+    title: `${capitalize(route.params.make) || 'Cars' } in  ${capitalize(route.params.city) || 'your city' }`,
 })
 
 definePageMeta({

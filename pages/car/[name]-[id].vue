@@ -10,11 +10,13 @@
 </template>
 
 <script setup>
+
+const { capitalize } = useUtilities()
 definePageMeta({
     layout: 'other',
 })
 
 useHead({
-    title: `${useRoute().params.name || 'Car'} Details`,
+    title: `${capitalize(useRoute().params.name) || 'Car'} Details`,
 })
 </script>

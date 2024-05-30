@@ -9,8 +9,15 @@ export const useUtilities = () => {
         return capitalizedWords.join(' ');
     }
 
+
+    function formatCurrency(number, currency: 'USD' = 'USD'): string {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency, currencyDisplay: 'symbol'}).format(number);
+    }
+
+
     return {
         capitalize,
+        formatCurrency
     }
 
 }

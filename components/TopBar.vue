@@ -12,6 +12,7 @@
       <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Price">
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Price</label>
     </form>
+    <SearchDropdown />
 
   </div>
 </template>

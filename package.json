@@ -13,6 +13,7 @@
     "@nuxt/image": "^1.7.0",
     "@vueuse/core": "^10.10.0",
     "@vueuse/nuxt": "^10.10.0",
+    "flowbite": "^2.3.0",
     "nuxt": "^3.11.2",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"

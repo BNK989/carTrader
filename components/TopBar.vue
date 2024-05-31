@@ -1,17 +1,17 @@
 <template>
-  <div class="flex gap-4 justify-between my-4 p-4 border border-gray-600 rounded">
-    <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)">
-      <label for="default-search">Location</label>
-      <input type="text" class="rounded mx-3 dark:bg-gray-800 dark:text-gray-50" v-model="city">
+  <div class="flex items-end gap-4 justify-between my-4 p-4 h-24 border border-gray-600 rounded">
+    <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)" class="relative">
+      <input type="text" class="peer max-w-44 py-1 pl-4 px-4  rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="City" v-model="city">
+      <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Location</label>
     </form>
-    <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)">
-      <label for="default-search">Make</label>
-      <input type="text" class="rounded mx-3 dark:bg-gray-800 dark:text-gray-50" v-model="make">
+    <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)" class="relative">
+      <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Make" v-model="make">
+      <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Make</label>
     </form>
-    <div>
-      <label for="default-search">Price</label>
-      <input type="text" class="rounded mx-3 dark:bg-gray-800 dark:text-gray-50">
-    </div>
+    <form class="relative">
+      <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Price">
+      <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Price</label>
+    </form>
 
   </div>
 </template>

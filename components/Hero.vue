@@ -6,7 +6,7 @@
         <div
             class="absolute bg-black max-h-fit bg-opacity-20 shadow-xl shadow-gray-950 rounded-xl my-auto inset-0 flex justify-center items-center flex-col py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             <h1
-                class="mb-4 text-4xl font-extrabold tracking-widest leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                class="myText bg-gradient-to-r from-blue-600 via-red-500 to-fuchsia-500 bg-clip-text text-transparent  mb-4 text-4xl font-extrabold tracking-widest leading-none text-gray-900 md:text-5xl lg:text-6xl">
                 Start your drive
             </h1>
             <SearchBar />
@@ -14,4 +14,10 @@
 
     </section>
 </template>
+
+<style>
+h1.myText{
+    text-shadow: -1px 2px 6px oklch(0.73 0.31 336.66 / 0.3);
+}
+</style>
 

@@ -21,7 +21,7 @@
             @click.stop="emit('toggleLike', car.id)"
             :class="like ? 'bg-red-600' : 'bg-gray-600'"
             class="absolute cursor-pointer top-2 right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-gray-50 rounded-full">
-            LIKE {{ like ? '✓' : 'X' }}
+            LIKE
         </span>
     </div>
 </template>

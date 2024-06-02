@@ -1,5 +1,5 @@
 <template>        
-<footer class="p-1 bg-white md:p-8 lg:p-2 dark:bg-gray-800">
+<footer class="fixed bottom-0 w-full p-1 bg-white md:p-8 lg:p-2 dark:bg-gray-800">
   <div class="mx-auto max-w-screen-xl text-center">
       <!-- <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
           <svg class="mr-2 h-8" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">

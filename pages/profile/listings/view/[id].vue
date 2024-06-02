@@ -1,14 +1,14 @@
 <script setup>
 definePageMeta({
-  layout: "custom",
+  layout: "other",
 });
 </script>
 
 <template>
-  <div class="rounded shadow mt-20">
-    <CarMessageCard />
-    <CarMessageCard />
-    <CarMessageCard />
-    <CarMessageCard />
+  <div class="rounded shadow mt-20 dark:text-slate-50">
+    <MessageCard />
+    <MessageCard />
+    <MessageCard />
+    <MessageCard />
   </div>
 </template>

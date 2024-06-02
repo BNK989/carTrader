@@ -4,23 +4,26 @@
       <input type="text" class="peer max-w-44 py-1 pl-4 px-4  rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="City" v-model="city">
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Location</label>
     </form>
-    <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)" class="relative">
+    <!-- <form @submit.prevent="$router.push(`/city/${city}/car/${make}`)" class="relative">
       <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Make" v-model="make">
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Make</label>
-    </form>
+    </form> -->
+    <SearchDropdown :options="makes" />
     <form class="relative">
       <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Price">
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Price</label>
     </form>
-    <SearchDropdown />
 
   </div>
+  <!-- <pre>{{ makes }}</pre> -->
 </template>
 
 <script setup>
 const route = useRoute()
 const city = ref(route.params.city)
 const make = ref(route.params.make)
+
+const {makes} = useMakes()
 
 if (!isNaN(+city.value)) {
     throw createError({ 

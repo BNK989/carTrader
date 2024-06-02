@@ -2,6 +2,7 @@
     <NuxtErrorBoundary>
         <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <TopBar />
+            <SearchedTags />
             <div class="results flex flex-col gap-4">
                 <NuxtPage />
             </div>

@@ -12,7 +12,7 @@ const props = defineProps({
     cars: Array,
     // default: buCars
 })
-console.log('cars', props)
+// console.log('cars', props)
 
 const toggleLike = (id) => {
 

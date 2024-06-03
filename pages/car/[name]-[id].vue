@@ -13,7 +13,7 @@
 <script setup>
 const route = useRoute()
 const { capitalize } = useUtilities()
-const {cars} = useCars()
+// const {cars} = useCars()
 
 definePageMeta({
     layout: 'other',
@@ -24,8 +24,9 @@ useHead({
 })
 
 const carId = +route.params.id
+const car = await useFetchCar(carId)
 
-const car = computed(() => cars.find((car) => car.id == carId))
+// const car = computed(() => cars.find((car) => car.id == carId))
 
 if(!car.value) {
     throw createError({

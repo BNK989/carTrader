@@ -5,8 +5,7 @@
         data-dropdown-ignore-click-outside-class="pricepicker"
         type="button"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        ${{priceRange.min}}
-        <p class="ms-1">- ${{priceRange.max}}</p>
+        {{rangeText}}
         <svg class="w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path
                 stroke="currentColor"
@@ -49,6 +48,8 @@
                         placeholder="Max price" />
                 </div>
             </div>
+            <button 
+            @click="applyChange" class="bg-gray-600 text-white px-10 py-2 rounded mt-4 w-full">Apply</button>
         </div>
     </div>
 </template>
@@ -57,13 +58,29 @@
     const route = useRoute()
     const router = useRouter()
 
-
 const priceRange = ref({
     min: route.query.min || 0,
     max: route.query.max || 0
 })
 
+const rangeText = computed(() => {
+ if (+priceRange.value.min === 0 && +priceRange.value.max === 0) return 'Any'
+ else return `$${priceRange.value.min} - $${priceRange.value.max}`
+
+}) 
+
 const handleChange = () => {
-    router.push({query: {...route.query, ...priceRange.value}})
+    const filterByPrice: {min?: number, max?: number} = {min: +priceRange.value.min, max: +priceRange.value.max}
+
+    if (filterByPrice.min === 0 ) delete filterByPrice.min
+    if (filterByPrice.max === 0 ) delete filterByPrice.max
+    router.push({query: { ...filterByPrice}})
+    
+    // refresh the page
+    // location.reload()
+}
+
+const applyChange = () => {
+    location.reload()
 }
 </script>

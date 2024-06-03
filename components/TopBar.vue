@@ -9,7 +9,7 @@
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Make</label>
     </form> -->
     <SearchDropdown :options="makes" />
-    <MixMaxPicker />
+    <MinMaxPicker />
     <!-- <form class="relative">
       <input type="text" class="peer max-w-44 p-1 pl-4 rounded dark:bg-gray-800 dark:text-gray-50 placeholder-transparent" placeholder="Price">
       <label for="default-search" class="absolute left-4 top-1 -translate-y-8 transition-all peer-placeholder-shown:translate-y-0">Price</label>
@@ -20,6 +20,8 @@
 </template>
 
 <script setup>
+import MinMaxPicker from './MinMaxPicker.vue'
+
 const route = useRoute()
 const city = ref(route.params.city)
 const make = ref(route.params.make)

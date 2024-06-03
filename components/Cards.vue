@@ -5,8 +5,14 @@
 </template>
 
 <script setup>
-const {cars} = useCars()
+// const {cars: buCars} = useCars()
 const liked = useLocalStorage('liked', {})
+
+const props = defineProps({
+    cars: Array,
+    // default: buCars
+})
+console.log('cars', props)
 
 const toggleLike = (id) => {
 

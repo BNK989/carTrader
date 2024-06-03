@@ -100,7 +100,7 @@ const props = defineProps({
 })
 
 const query = ref('')
-const selectedMakes = ref(route.params.make.split('-OR-'))
+const selectedMakes = ref(route.params.make ? route.params.make.split('-OR-') : [])
 const localOptions = ref(props.options)
 
 const onInput = () => {
@@ -119,7 +119,6 @@ const onMakeSelect = (e) => {
     } else {
         selectedMakes.value.push(curr)
     }
-    // console.log('selectedMakes', selectedMakes.value)
     router.push(`/city/${route.params.city}/car/${selectedMakes.value.join('-OR-')}`)
 }
 

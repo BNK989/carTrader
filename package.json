@@ -16,6 +16,7 @@
     "@vueuse/core": "^10.10.0",
     "@vueuse/nuxt": "^10.10.0",
     "flowbite": "^2.3.0",
+    "joi": "^17.13.1",
     "nuxt": "^3.11.2",
     "nuxt-vuefire": "^1.0.2",
     "prisma": "^5.15.0",

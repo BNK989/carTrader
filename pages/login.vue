@@ -135,9 +135,10 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
 
-const user= useSupabaseUser()
+const user = useSupabaseUser()
 
 const login = async () => {
+    console.log('test:')
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "google"})
 

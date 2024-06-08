@@ -7,37 +7,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Car {
+  id            Int       @id @default(autoincrement())
+  name          String
+  numberOfSeats Int
+  miles         Int
+  price         Int
+  image         String
+  features      String[]
+  description   String
+  city          String
+  model         String
+  year          Int
+  make          String
+  listerId      String
+  Message       Message[]
+}
+
+model Message {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  message   String
+  listingId Int
+  Car       Car    @relation(fields: [listingId], references: [id])
+}
+
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model Test {
   id         BigInt   @id @default(autoincrement())
   created_at DateTime @default(now()) @db.Timestamptz(6)
   test       String?  @db.VarChar
-}
-
-model Car {
-  id Int @id @default(autoincrement())
-  name String
-  numberOfSeats Int
-  miles Int
-  price Int
-  image String
-  features String[]
-  description String
-  city String
-  model String
-  year Int
-  make String
-  ListerId String
-  messages Message[]
-}
-
-model Message {
-  id Int @id @default(autoincrement())
-  name String
-  email String
-  phone String
-  message String
-  listingId Int 
-  listing Car @relation(fields: [listingId], references: [id])
 }

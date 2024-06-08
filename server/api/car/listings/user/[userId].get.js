@@ -6,7 +6,7 @@ export default defineEventHandler(async (e) => {
     const userId = e.context.params.userId
     const cars = await prisma.car.findMany({
         where: {
-            ListerId: userId
+            listerId: userId
         },
         select: {
             image: true,

@@ -1,6 +1,5 @@
-// import { PrismaClient } from '@prisma/client/extension'
 import Joi from 'joi'
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -16,7 +15,7 @@ const schema = Joi.object({
     numberOfSeats: Joi.number().integer().min(0).max(100).required(),
     features: Joi.array().items(Joi.string()).required(),
     image: Joi.string().required(),
-    ListerId: Joi.string().required(),
+    listerId: Joi.string().required(),
     description: Joi.string().required(),
     price: Joi.number().min(0).max(1000000),
     name: Joi.string().required(),
@@ -24,6 +23,7 @@ const schema = Joi.object({
 
 export default defineEventHandler(async (e) => {
     const body = await readBody(e)
+    
 
     const { error, value } = schema.validate(body)
 
@@ -42,7 +42,7 @@ export default defineEventHandler(async (e) => {
             features: value.features,
             description: value.description,
             image: value.image,
-            ListerId: value.ListerId,
+            listerId: value.listerId,
             price: +value.price,
             name: value.name.toLowerCase(),
         },

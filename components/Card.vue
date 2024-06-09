@@ -3,9 +3,9 @@
         <NuxtLink :to="`/car/${car.make}-${car.id}`">
             <div
                 class="grid items-center grid-cols-2 bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <NuxtImg
+                <img
                     class="object-cover rounded-t-lg h-full md:rounded-none md:rounded-s-lg"
-                    :src="car.url"
+                    :src="`${config.public.supabase.url}/storage/v1/object/public/images/${car.image}`"
                     :alt="car.name + ' image'" />
                 <div class="flex flex-col h-full justify-evenly p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ car.name }}</h5>
@@ -31,6 +31,8 @@ const props = defineProps({
     car: Object,
     like: Boolean,
 })
+
+const config = useRuntimeConfig()
 const emit = defineEmits(['toggleLike'])
 
 const { formatCurrency } = useUtilities()

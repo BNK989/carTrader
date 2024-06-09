@@ -34,6 +34,7 @@ definePageMeta({
 
 const { makes } = useMakes()
 const user = useSupabaseUser()
+const supabase = useSupabaseClient()
 const errorMsg = ref('')
 
 const info = useState('adInfo', () => {
@@ -47,7 +48,7 @@ const info = useState('adInfo', () => {
         seats: '',
         features: '',
         description: '',
-        image: 'placeholder.jpg',
+        image: null,
     }
 })
 
@@ -108,6 +109,11 @@ const isButtonDisabled = computed(() => {
 })
 
 const handleSubmit = async () => {
+    const fileName = `${info.value.make}_${info.value.model}_${Date.now()}`
+    const {data, error} = await supabase.storage.from('images').upload(`public/${fileName}`, info.value.image)
+    if(error) {
+        return errorMsg.value = 'error: Cannot upload image'
+    }
     const body = {
         ...info.value,
         features: info.value.features.split(', '),
@@ -117,7 +123,7 @@ const handleSubmit = async () => {
         miles: +info.value.miles,
         name: info.value.make + ' ' + info.value.model,
         listerId: user.value.id,
-        image: 'placeholderfornow',
+        image: data.path,
     }
 
     delete body.seats
@@ -125,12 +131,13 @@ const handleSubmit = async () => {
     try {
         const res = await $fetch('/api/car/listings', {
             method: 'POST',
-            body: body,
+            body,
         })
         navigateTo('/profile/listings')
     } catch (err) {
         console.error('there was an error', err)
         errorMsg.value = err.statusMessage
+        await supabase.storage.from('images').remove([data.path])
     }
 }
 </script>

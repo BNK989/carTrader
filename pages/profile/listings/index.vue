@@ -9,7 +9,11 @@
             >
         </div>
         <div class="shadow rounded p-3 mt-5">
-            <ListingCard v-for="listing in listings" :key="listing.id" :listing="listing" />
+            <ListingCard
+                v-for="listing in listings"
+                :key="listing.id"
+                :listing="listing"
+                @delete-listing="handleDelete" />
         </div>
     </div>
 </template>
@@ -19,5 +23,18 @@ definePageMeta({
     layout: 'other',
 })
 
-const { listings } = useCars()
+const user = useSupabaseUser()
+const { data: listings, refresh } = useFetch(`/api/car/listings/user/${user.value.id}`)
+
+const handleDelete = async (id) => {
+    try {
+        await $fetch(`/api/car/listings/${id}`, {
+            method: 'DELETE',
+        })
+        listings.value = listings.value.filter((listing) => listing.id !== id)
+    } catch (err) {
+        console.error('there was an error', err)
+        refresh()
+    }
+}
 </script>
